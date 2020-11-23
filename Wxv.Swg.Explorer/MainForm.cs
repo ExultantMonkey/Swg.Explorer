@@ -431,7 +431,25 @@ namespace Wxv.Swg.Explorer
             RefreshSelectedDirectoryFile();
         }
 
-
-
+        private void listView_ColumnClick(object sender, ColumnClickEventArgs e)
+        {
+            //Order by name
+            switch (e.Column)
+            {
+                case 0:
+                    filteredItems.Sort((a, b) => string.Compare(a.Path, b.Path));
+                    break;
+                case 1:
+                    filteredItems.Sort((a, b) => string.Compare(a.FileType.ToString(), b.FileType.ToString()));
+                    break;
+                case 2:
+                    filteredItems.Sort((a, b) => a.DataSize.CompareTo(b.DataSize));
+                    break;
+                case 3:
+                    filteredItems.Sort((a, b) => string.Compare(a.TreFileName, b.TreFileName));
+                    break;
+            }
+            listView.Refresh();
+        }
     }
 }
