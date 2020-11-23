@@ -157,6 +157,12 @@ namespace Wxv.Swg.Common
                         Extension = "dae",
                         Name = "Collada",
                         Converter = (repository, data, targetFileName) => new ColladaMeshExporter(repository, data).Export(targetFileName)
+                    },
+                    new FileTypeExporter
+                    {
+                        Extension = "obj",
+                        Name = "OBJ",
+                        Converter = (repository, data, targetFileName) => new OBJMeshExporter(repository, data).Export(targetFileName)
                     }
                 },
                 DebugToString = (data, writer) => new MeshFileReader().Load(data).ToString(writer)
